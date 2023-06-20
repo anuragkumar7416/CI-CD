@@ -2,7 +2,6 @@ import 'package:cicd_test/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'login.dart';
 
 void main() {
   runApp(const MyApp());

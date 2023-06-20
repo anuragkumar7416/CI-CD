@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final txt = myController.text;
     if(txt.isEmpty){
       return'Can\'t be a null';
-    }else if((RegExp(r'(?=.*?[\s])').hasMatch(txt))){
+    }else if((RegExp(r'(?=.*?\s)').hasMatch(txt))){
       return '!! Spaces is not allowed';
     }
     else{
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
     else if(!(RegExp(r'(?=.*?[#?!@$%^&*-])').hasMatch(txt))){
       return '!! Please enter a special character ';
     }
-    else if((RegExp(r'(?=.*?[\s])').hasMatch(txt))){
+    else if((RegExp(r'(?=.*?\s)').hasMatch(txt))){
       return '!! Spaces is not allowed';
     }
 
@@ -147,18 +147,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Expanded(
                             child: TextField(
-                              key: Key('email'),
+                              key: const Key('email'),
                               controller: myController,
                               onChanged: (String value) {
                                 setState(() {
                                   if (regExp.hasMatch(value)) {
-                                    print('valid');
+                                    debugPrint('valid');
                                     isEmailValid = true;
                                   }else if(myController2.text.isNotEmpty && (myController2.text !=myController1.text)){
                                     isEmailValid = false;
                                   }
                                   else {
-                                    print('invalid');
+                                    debugPrint('invalid');
                                     isEmailValid = false;
                                   }
                                 });
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: isEmailValid
                             ? null
                             :  Text(_validEmail(),
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         ),
                       ),
                     ),
@@ -219,16 +219,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.white,
                       ),
                       child: TextField(
-                        key: Key('password'),
+                        key: const Key('password'),
                         controller: myController1,
                         onChanged: (String value) {
                           setState(() {
                             if (regExp1.hasMatch(value)) {
-                              print('valid password');
+                              debugPrint('valid password');
                               isPasswordValid = true;
                               password = value;
                             } else {
-                              print('invalid password');
+                              debugPrint('invalid password');
                               isPasswordValid = false;
                             }
                           });
@@ -278,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ? null
                             :  Text(
                           _passwordError(),
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         ),
                       ),
                     ),
@@ -295,10 +295,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         onChanged: (String value) {
                           setState(() {
                             if (value == password) {
-                              print('password is confirmed');
+                              debugPrint('password is confirmed');
                               isConfirmed = true;
                             } else {
-                              print('password is not same');
+                              debugPrint('password is not same');
                               isConfirmed = false;
                             }
                           });
@@ -354,7 +354,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       margin: const EdgeInsets.only(top: 20),
                       child: ElevatedButton(
-                        key: Key('login_btn'),
+                        key: const Key('login_btn'),
                           onPressed: () {
                             if (myController.text.isNotEmpty &&
                                 myController1.text.isNotEmpty &&
@@ -364,20 +364,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 isPasswordValid &&
                                 isConfirmed) {
                               initPreferences();
-                              Get.to(()=>HomeScreen());
+                              Get.to(()=>const HomeScreen());
                             }
                             else if(password!=myController2.text){
 
-                              print('Password is not same');
+                              debugPrint('Password is not same');
 
                             }
                             else  {
-                              print('Please enter valid email and password');
+                              debugPrint('Please enter valid email and password');
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: const Color(0xffe50812),
-                            onPrimary: Colors.white,
+                            backgroundColor: const Color(0xffe50812),
+                            foregroundColor: Colors.white,
                             fixedSize: const Size(290, 40),
                             elevation: 20,
                             shadowColor: const Color(0xffe50812),
@@ -446,13 +446,13 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 30,
             width: 25,
             padding: const EdgeInsets.only(left: 1, right: 1),
-            child: Image.asset(
-              'assets/images/amplifier.png',
-              color: Colors.white,
-            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
               border: Border.all(color: Colors.white),
+            ),
+            child: Image.asset(
+              'assets/images/amplifier.png',
+              color: Colors.white,
             ),
           )
         ],

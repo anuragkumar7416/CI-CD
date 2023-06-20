@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -36,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           )
@@ -75,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xff1c1c1c),
+        backgroundColor: const Color(0xff1c1c1c),
         leading: const Icon(
           Icons.search,
           color: Colors.grey,
@@ -150,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: const EdgeInsets.only(top: 200, left: 20),
                 child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color(0xffe50812), onPrimary: Colors.white),
+                        backgroundColor: const Color(0xffe50812), foregroundColor: Colors.white),
                     onPressed: () {},
                     icon: const Icon(
                       Icons.play_circle_outline_outlined,
@@ -269,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(width: 6, color: Color(0xff352928)),
+                border: Border.all(width: 6, color: const Color(0xff352928)),
                 boxShadow: const [
                   BoxShadow(color: Colors.white, blurRadius: 3)
                 ]),
@@ -279,21 +280,21 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       bottomNavigationBar: Container(
-        color: Color(0xff282828),
-        margin: EdgeInsets.only(bottom: 40),
+        color: const Color(0xff282828),
+        margin: const EdgeInsets.only(bottom: 40),
         height: 60,
         child: Row(
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment:CrossAxisAlignment.center ,
           children: [
-            SizedBox(width: 20,),
-            IconButton(onPressed: (){}, icon:Icon(Icons.menu),iconSize: 35,),
-            SizedBox(width: 20,),
-            IconButton(onPressed: (){}, icon:Icon(Icons.star_outline),iconSize: 35,),
-            SizedBox(width: 100,),
-            IconButton(onPressed: (){}, icon:Icon(Icons.folder_open_rounded),iconSize: 35,),
-            SizedBox(width: 30,),
-            IconButton(onPressed: (){}, icon:Icon(Icons.settings_outlined),iconSize: 35,),
+            const SizedBox(width: 20,),
+            IconButton(onPressed: (){}, icon:const Icon(Icons.menu),iconSize: 35,),
+            const SizedBox(width: 20,),
+            IconButton(onPressed: (){}, icon:const Icon(Icons.star_outline),iconSize: 35,),
+            const SizedBox(width: 100,),
+            IconButton(onPressed: (){}, icon:const Icon(Icons.folder_open_rounded),iconSize: 35,),
+            const SizedBox(width: 30,),
+            IconButton(onPressed: (){}, icon:const Icon(Icons.settings_outlined),iconSize: 35,),
           ],
         ),
       ),
