@@ -31,6 +31,7 @@ void main() {
 
 
 String? checkPassword(String text){
+
   final txt = text;
   if(txt.isEmpty){
     return'Can\'t be a null';
