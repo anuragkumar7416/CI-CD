@@ -5,26 +5,32 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:cicd_test/login.dart';
+import 'package:cicd_test/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:cicd_test/main.dart';
+import 'package:get/get.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const GetMaterialApp(
+        home: LoginScreen(),
+      ),
+    );
+    Finder emailField = find.byKey( Key('email'));
+    await tester.enterText(emailField, "text");
+    await tester.enterText(emailField, "test@gmail.com");
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    Finder passwordField = find.byKey(new Key('password'));
+    await tester.enterText(passwordField, "text");
+    await tester.enterText(passwordField, "Test@1123");
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    Finder loginButton = find.byKey(new Key('login_btn'));
+    await tester.tap(loginButton);
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
   });
 }
+
